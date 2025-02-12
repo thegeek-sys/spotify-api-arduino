@@ -1034,7 +1034,7 @@ int SpotifyArduino::getPlaylist(String query, int limit, processPlaylist playlis
 #endif
 
     // Get from https://arduinojson.org/v6/assistant/
-    const size_t bufferSize = searchDetailsBufferSize;
+    const size_t bufferSize = playlistDetailsBufferSize;
     if (autoTokenRefresh)
     {
         checkAndRefreshAccessToken();
