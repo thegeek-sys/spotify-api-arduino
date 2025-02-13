@@ -84,7 +84,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 #define SPOTIFY_NUM_ALBUM_IMAGES 3 // Max spotify returns is 3, but the third one is probably too big for an ESP
 
-#define SPOTIFY_MAX_NUM_ARTISTS 5
+#define SPOTIFY_MAX_NUM_ARTISTS 5 
 
 #define SPOTIFY_ACCESS_TOKEN_LENGTH 309
 
@@ -154,10 +154,8 @@ struct PlaylistResult
   const char *albumUri;
   const char *trackName;
   const char *trackUri;
-  SpotifyArtist artists[SPOTIFY_MAX_NUM_ARTISTS];
-  SpotifyImage albumImages[SPOTIFY_NUM_ALBUM_IMAGES];
-  int numArtists;
-  int numImages;
+  const char *artistName;
+  const char *artistUri;
 };
 
 struct CurrentlyPlaying
@@ -224,7 +222,7 @@ public:
   int searchForSong(String query, int limit, processSearch searchCallback, SearchResult results[]);
 
   //Playlist
-  int getPlaylist(String query, int limit, processPlaylist playlistCallback, PlaylistResult results[]);
+  int getPlaylist(String query, int limit, String market, processPlaylist playlistCallback, PlaylistResult results[]);
 
   // Image methods
   bool getImage(char *imageUrl, Stream *file);
